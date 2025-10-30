@@ -12,7 +12,7 @@ function App() {
   ]);
   const [filter, setFilter] = useState('all');
 
-  // Add new todo
+
   const addTodo = (text) => {
     const newTodo = {
       id: Date.now(),
@@ -22,7 +22,7 @@ function App() {
     setTodos([...todos, newTodo]);
   };
 
-  // Toggle todo completion
+ 
   const toggleTodo = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -31,19 +31,19 @@ function App() {
     );
   };
 
-  // Delete todo
+ 
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  // Edit todo
+
   const editTodo = (id, newText) => {
     setTodos(
       todos.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo))
     );
   };
 
-  // Filter todos efficiently using useMemo
+  
   const filteredTodos = useMemo(() => {
     switch (filter) {
       case 'active':
@@ -55,7 +55,7 @@ function App() {
     }
   }, [todos, filter]);
 
-  // Calculate stats efficiently using useMemo
+  
   const todoStats = useMemo(() => {
     return {
       total: todos.length,
