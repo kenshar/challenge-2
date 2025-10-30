@@ -65,6 +65,10 @@
   background-color: #535bf2;
 }
 
+.btn-add:active {
+  background-color: #0066ff;
+}
+
 /* Filter Styles */
 .filter-container {
   display: flex;
@@ -94,6 +98,12 @@
 
 .btn-filter:hover {
   border-color: #646cff;
+}
+
+.btn-filter:active {
+  background-color: #0066ff;
+  color: white;
+  border-color: #0066ff;
 }
 
 .btn-filter.active {
@@ -198,6 +208,10 @@
   background-color: #45a049;
 }
 
+.btn-edit:active:not(:disabled) {
+  background-color: #0066ff;
+}
+
 .btn-edit:disabled {
   background-color: #ccc;
   cursor: not-allowed;
@@ -210,6 +224,10 @@
 
 .btn-delete:hover {
   background-color: #da190b;
+}
+
+.btn-delete:active {
+  background-color: #0066ff;
 }
 
 /* Edit Form Styles */
@@ -256,6 +274,10 @@
   background-color: #535bf2;
 }
 
+.btn-save:active {
+  background-color: #0066ff;
+}
+
 .btn-cancel {
   background-color: #888;
   color: white;
@@ -263,6 +285,10 @@
 
 .btn-cancel:hover {
   background-color: #666;
+}
+
+.btn-cancel:active {
+  background-color: #0066ff;
 }
 
 /* Responsive Design */
