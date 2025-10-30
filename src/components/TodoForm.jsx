@@ -8,6 +8,7 @@ function TodoForm({ onAddTodo }) {
     if (inputValue.trim()) {
       onAddTodo(inputValue.trim());
       setInputValue('');
+      e.target.blur();
     }
   };
 

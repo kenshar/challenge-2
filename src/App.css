@@ -69,7 +69,7 @@
 }
 
 .btn-add:active {
-  background-color: #003d99;
+  background-color: #0052cc;
 }
 
 /* Filter Styles */
@@ -159,6 +159,11 @@
   box-shadow: 0 2px 8px rgba(100, 108, 255, 0.1);
 }
 
+.todo-item:focus-within {
+  border-color: #ddd;
+  box-shadow: none;
+}
+
 .todo-item.completed {
   opacity: 0.6;
 }
@@ -173,6 +178,10 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
+}
+
+.todo-checkbox:focus {
+  outline: none;
 }
 
 .todo-text {
@@ -200,6 +209,11 @@
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s;
+}
+
+.btn-edit:focus,
+.btn-delete:focus {
+  outline: none;
 }
 
 .btn-edit {

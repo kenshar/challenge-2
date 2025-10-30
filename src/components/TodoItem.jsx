@@ -42,6 +42,7 @@ function TodoItem({ todo, onToggle, onDelete, onEdit }) {
             checked={todo.completed}
             onChange={() => onToggle(todo.id)}
             className="todo-checkbox"
+            tabIndex="-1"
           />
           <span className="todo-text" onClick={() => onToggle(todo.id)}>
             {todo.text}

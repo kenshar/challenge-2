@@ -8,7 +8,7 @@ function App() {
   const [todos, setTodos] = useState([
     { id: 1, text: 'Learn React fundamentals', completed: false },
     { id: 2, text: 'Build a todo app', completed: false },
-    { id: 3, text: 'Master props and events', completed: true },
+    { id: 3, text: 'Master props and events', completed: false },
   ]);
   const [filter, setFilter] = useState('all');
 
