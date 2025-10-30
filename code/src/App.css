@@ -56,7 +56,7 @@
 .btn-add {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  background-color: #646cff;
+  background-color: #0066ff;
   color: white;
   border: none;
   border-radius: 8px;
@@ -65,11 +65,11 @@
 }
 
 .btn-add:hover {
-  background-color: #535bf2;
+  background-color: #0052cc;
 }
 
 .btn-add:active {
-  background-color: #0066ff;
+  background-color: #003d99;
 }
 
 /* Filter Styles */
