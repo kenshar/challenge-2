@@ -1,35 +1,94 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useMemo } from 'react';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
+import Filter from './components/Filter';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState([
+    { id: 1, text: 'Learn React fundamentals', completed: false },
+    { id: 2, text: 'Build a todo app', completed: false },
+    { id: 3, text: 'Master props and events', completed: true },
+  ]);
+  const [filter, setFilter] = useState('all');
+
+  // Add new todo
+  const addTodo = (text) => {
+    const newTodo = {
+      id: Date.now(),
+      text,
+      completed: false,
+    };
+    setTodos([...todos, newTodo]);
+  };
+
+  // Toggle todo completion
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  // Delete todo
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  // Edit todo
+  const editTodo = (id, newText) => {
+    setTodos(
+      todos.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo))
+    );
+  };
+
+  // Filter todos efficiently using useMemo
+  const filteredTodos = useMemo(() => {
+    switch (filter) {
+      case 'active':
+        return todos.filter((todo) => !todo.completed);
+      case 'completed':
+        return todos.filter((todo) => todo.completed);
+      default:
+        return todos;
+    }
+  }, [todos, filter]);
+
+  // Calculate stats efficiently using useMemo
+  const todoStats = useMemo(() => {
+    return {
+      total: todos.length,
+      active: todos.filter((todo) => !todo.completed).length,
+      completed: todos.filter((todo) => todo.completed).length,
+    };
+  }, [todos]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <header className="app-header">
+        <h1>Todo List App</h1>
+        <p>Phase 2 React Challenge</p>
+      </header>
+
+      <main className="app-main">
+        <TodoForm onAddTodo={addTodo} />
+
+        <Filter
+          currentFilter={filter}
+          onFilterChange={setFilter}
+          todoStats={todoStats}
+        />
+
+        <TodoList
+          todos={filteredTodos}
+          onToggle={toggleTodo}
+          onDelete={deleteTodo}
+          onEdit={editTodo}
+        />
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
