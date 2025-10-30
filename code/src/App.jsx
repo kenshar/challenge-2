@@ -68,7 +68,6 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>Todo List App</h1>
-        <p>Phase 2 React Challenge</p>
       </header>
 
       <main className="app-main">
